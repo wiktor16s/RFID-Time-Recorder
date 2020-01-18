@@ -1,0 +1,19 @@
+.buttonsHolder {
+  margin-top: 50px;
+}
+
+.table-main tr {
+  cursor: pointer;
+}
+
+#mainTable td {
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  height: 5px !important;
+}
+
+.dontShowMe{
+  display: none;
+}

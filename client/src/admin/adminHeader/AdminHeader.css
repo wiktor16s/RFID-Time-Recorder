@@ -1,0 +1,30 @@
+.adminHeader {
+    text-align: center;
+  }
+  
+  .adminHeader-logo {
+    height: 100px;
+  }
+  
+  .adminHeader-header {
+    background-color: #222;
+    height: 150px;
+    padding: 5px;
+    color: white;
+  }
+  
+  .adminHeader-title {
+    font-size: 1.5em;
+    margin-top:0;
+    padding-top:0;
+  }
+  
+  .adminHeader-intro {
+    font-size: large;
+  }
+  
+  @keyframes App-logo-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  

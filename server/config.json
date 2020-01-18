@@ -1,0 +1,12 @@
+{
+    "db": {
+      "host": "192.168.100.247",
+      "user": "wiktor",
+      "password": "password",
+      "database": "mifare",
+      "dbPort": "3306"
+    },
+  
+    "serverPort": 3003
+  }
+  

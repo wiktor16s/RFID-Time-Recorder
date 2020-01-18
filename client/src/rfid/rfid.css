@@ -1,0 +1,25 @@
+body {
+  background: #e8e8e8;
+}
+
+.offsetTop {
+  margin-top: 50px;
+}
+
+.mainBtn {
+  width: 242px;
+  height: 150px;
+}
+
+.supportBtn {
+  height: 80px;
+}
+
+.modal {
+  margin-top: 15vh;
+}
+
+.modalText {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
