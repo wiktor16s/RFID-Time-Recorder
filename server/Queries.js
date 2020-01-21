@@ -111,7 +111,8 @@ class Queries {
   async addUser(name, id) {
     try {
       await this.sql.query(
-        `INSERT INTO users (id, userID, userName, cardNumber, userStatus) VALUES (NULL, "${id}", "${name}", "${id}", "0")`
+        `INSERT INTO users (id, userID, userName, cardNumber, userStatus) VALUES (NULL, ?, ?, ?, "0")`,
+        [id, name, id]
       );
       return true;
     } catch (err) {
@@ -121,7 +122,7 @@ class Queries {
 
   async deleteUser(id) {
     try {
-      await this.sql.query(`DELETE FROM users WHERE userID = "${id}"`);
+      await this.sql.query(`DELETE FROM users WHERE userID = ?`, id);
       return true;
     } catch (err) {
       throw err;
@@ -131,7 +132,8 @@ class Queries {
   async addEvent(id, status, day, date, time) {
     try {
       await this.sql.query(
-        `INSERT INTO events (id, userID, closeupEvent, day, date, time, photo, adnotation) VALUES (NULL, "${id}", "${status}", "${day}", "${date}", "${time}", "", "")`
+        `INSERT INTO events (id, userID, closeupEvent, day, date, time, photo, adnotation) VALUES (NULL, ?, ?, ?, ?, ?, "", "")`,
+        [id, status, day, date, time]
       );
       return true;
     } catch (err) {

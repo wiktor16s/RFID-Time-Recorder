@@ -1,32 +1,30 @@
+import log from "../tools/Logger";
+
 class Tools {
-    constructor() {
-        this.rfidChild = null;
-        this.clientChild = null;
-    }
+  constructor() {}
 
-    cleanup() {
-        let callback = this.cleaner;
+  cleanup() {
+    let callback = this.cleaner;
 
+    process.on("exit", function() {
+      callback();
+    });
 
-        process.on('exit', function () {
-            callback();
-        });
+    process.on("SIGINT", function() {
+      console.log("Ctrl-C...");
+      callback();
+      process.exit(2);
+    });
 
-        process.on('SIGINT', function () {
-            console.log('Ctrl-C...');
-            callback();
-            process.exit(2);
-        });
+    process.on("uncaughtException", function(e) {
+      console.log("Uncaught Exception...");
+      console.log(e.stack);
+    });
+  }
 
-        process.on('uncaughtException', function (e) {
-            console.log('Uncaught Exception...');
-            console.log(e.stack);
-        })
-    }
-
-    cleaner() {
-        console.log("THIS IS A CLEANER CALLBACK");
-    }
+  cleaner() {
+    log.info("App was stopped. Cleaning...");
+  }
 }
 
-module.exports = new Tools();
+export default new Tools();
