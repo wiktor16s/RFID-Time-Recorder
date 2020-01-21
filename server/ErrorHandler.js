@@ -1,16 +1,25 @@
-class ErrorHandler {
-    constructor() {}
+import log from "../tools/Logger";
 
-    init(){
-        process.on('uncaughtException', (error) => {
-            console.error(`uncaughtException ${error.message}`);
-        });
-        
-        process.on('unhandledRejection', (reason) => {
-            console.error(`unhandledRejection ${reason}`);
-        });
-    }
+class ErrorHandler {
+  constructor() {}
+
+  init() {
+    process.on("uncaughtException", error => {
+      log.error(`uncaughtException `, error);
+    });
+
+    process.on("unhandledRejection", reason => {
+      switch (reason.code) {
+        case "ETIMEDOUT":
+          log.error("NO CONNECTION WITH DATABASE. CANNOT CONNECT.");
+          break;
+
+        default:
+          log.error("unhandledRejection ", reason);
+          break;
+      }
+    });
+  }
 }
 
-
-module.exports = new ErrorHandler();
+export default new ErrorHandler();

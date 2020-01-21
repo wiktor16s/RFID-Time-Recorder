@@ -1,4 +1,6 @@
-const mysql = require("mysql");
+import mysql from "mysql";
+import log from "../tools/Logger";
+
 class Sql {
   constructor(config) {
     this.pool = mysql.createPool({
@@ -6,6 +8,18 @@ class Sql {
       user: config["user"],
       password: config["password"],
       database: config["database"]
+    });
+
+    this.pool.on("error", e => {
+      switch (e.code) {
+        case "ETIMEDOUT":
+          log.error("NO CONNECTION WITH DATABASE. CANNOT CONNECT.");
+          break;
+
+        default:
+          log.error("mysql error ", reason);
+          break;
+      }
     });
   }
 
@@ -25,7 +39,6 @@ class Sql {
     });
   }
 
-
   getInformationsList() {
     this.pool.query("SELECT * FROM `informations`", function(
       error,
@@ -38,4 +51,4 @@ class Sql {
   }
 }
 
-module.exports = Sql;
+export default Sql;

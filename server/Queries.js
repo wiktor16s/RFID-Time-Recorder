@@ -33,8 +33,7 @@ class Queries {
         });
       }
     } catch (err) {
-      console.log(err);
-      return err;
+      throw err;
     }
   }
 
@@ -45,8 +44,7 @@ class Queries {
       );
       return events;
     } catch (err) {
-      console.log(err);
-      return err;
+      throw err;
     }
   }
 
@@ -58,8 +56,7 @@ class Queries {
       );
       return photo[0];
     } catch (err) {
-      console.log(err);
-      return err;
+      throw err;
     }
   }
 
@@ -71,8 +68,7 @@ class Queries {
       );
       return events;
     } catch (err) {
-      console.log(err);
-      return err;
+      throw err;
     }
   }
 
@@ -84,8 +80,7 @@ class Queries {
       );
       return user;
     } catch (err) {
-      console.log(err);
-      return err;
+      throw err;
     }
   }
 
@@ -97,8 +92,7 @@ class Queries {
       );
       return user;
     } catch (err) {
-      console.log(err);
-      return err;
+      throw err;
     }
   }
 
@@ -110,8 +104,7 @@ class Queries {
       );
       return events;
     } catch (err) {
-      console.log(err);
-      return err;
+      throw err;
     }
   }
 
@@ -122,7 +115,7 @@ class Queries {
       );
       return true;
     } catch (err) {
-      return err;
+      throw err;
     }
   }
 
@@ -131,7 +124,7 @@ class Queries {
       await this.sql.query(`DELETE FROM users WHERE userID = "${id}"`);
       return true;
     } catch (err) {
-      return err;
+      throw err;
     }
   }
 
@@ -142,7 +135,7 @@ class Queries {
       );
       return true;
     } catch (err) {
-      return err;
+      throw err;
     }
   }
 
@@ -154,7 +147,7 @@ class Queries {
       );
       return added;
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 
@@ -166,7 +159,7 @@ class Queries {
       );
       return status;
     } catch (err) {
-      return err;
+      throw err;
     }
   }
 
@@ -175,7 +168,7 @@ class Queries {
       await this.sql.query(`DELETE FROM events WHERE id = "${id}"`);
       return true;
     } catch (err) {
-      return err;
+      throw err;
     }
   }
 
@@ -187,7 +180,7 @@ class Queries {
       );
       return true;
     } catch (err) {
-      return err;
+      throw err;
     }
   }
 
@@ -198,7 +191,7 @@ class Queries {
       );
       return true;
     } catch (err) {
-      return err;
+      throw err;
     }
   }
 
@@ -207,8 +200,7 @@ class Queries {
       let informations = await this.sql.query(`SELECT * FROM informations`);
       return informations[0];
     } catch (err) {
-      console.error(err);
-      return err;
+      throw err;
     }
   }
 
@@ -220,7 +212,7 @@ class Queries {
       );
       return informations;
     } catch (err) {
-      console.error(err);
+      throw err;
     }
   }
 
@@ -229,8 +221,7 @@ class Queries {
       let getTime = await this.sql.query(`SELECT setTime FROM utils`);
       return getTime[0];
     } catch (err) {
-      console.error(err);
-      return err;
+      throw err;
     }
   }
 
@@ -239,7 +230,7 @@ class Queries {
       let token = await this.sql.query(`SELECT token FROM utils`);
       return token[0];
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 
@@ -251,9 +242,9 @@ class Queries {
       );
       return user;
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 }
 
-module.exports = Queries;
+export default Queries;
